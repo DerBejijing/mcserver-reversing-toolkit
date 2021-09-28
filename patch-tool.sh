@@ -8,6 +8,9 @@ SRCDIR=./decompiled
 SERVER_ORIGINAL=./server/spigot-1.16.5.jar
 SERVER_PATCHED=updated_server/spigot-1.16.5.jar
 
+DIR_DECOMPILED=./decompiled
+DIR_PATCHED=./patched_server
+
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
 COLOR_LIGHT_BLUE='\033[1;34m'
@@ -20,8 +23,7 @@ patch_server () {
     echo -e "${COLOR_YELLOW}Patching Server...${COLOR_RESET}"
     
     LINES=$(wc -l <$FILETRACKER)
-    if [[ $LINES -gt 0 ]]
-    then
+    if [[ $LINES -gt 0 ]]; then
         cd $SRCDIR
         echo -e "\n${COLOR_YELLOW}Compiling... [${COLOR_RESET}"
         ERROR_FILES=("")
@@ -40,8 +42,7 @@ patch_server () {
 
 
         # echo all non-compileable files
-        if [[ ! ${#ERROR_FILES[@]} -eq 1 ]]
-        then
+        if [[ ! ${#ERROR_FILES[@]} -eq 1 ]]; then
 
             echo -e "\n${COLOR_RED}The following files could not be compiled:${COLOR_RESET}"
             for file in "${ERROR_FILES[@]}"
@@ -62,14 +63,12 @@ patch_server () {
 
             for file in ${ERROR_FILES[@]}
             do
-                if [[ $file = $NEXT_FILE ]]
-                then
+                if [[ $file = $NEXT_FILE ]]; then
                     CONTAINS=1
                 fi
             done
 
-            if [[ $CONTAINS -eq 0 ]]
-            then
+            if [[ $CONTAINS -eq 0 ]]; then
                 NEXT_FILE=${NEXT_FILE//.java/.class}
                 echo -e "${COLOR_LIGHT_BLUE}${NEXT_FILE}${COLOR_RESET}"
                 jar -uf ../${SERVER_PATCHED} $NEXT_FILE
@@ -77,8 +76,7 @@ patch_server () {
             fi
         done < ../${FILETRACKER}
 
-        if [[ $PATCHED_FILES -eq 0 ]]
-        then
+        if [[ $PATCHED_FILES -eq 0 ]]; then
             echo -e "${COLOR_RED}No files have been packed${COLOR_RESET}"
         fi
 
@@ -108,8 +106,9 @@ run_server () {
 
 ínitialize () {
 
-    echo "Initializing"
-
+    if test -f "$FILETRACKER"; then
+        echo exists
+    fi
 }
 
 
@@ -126,25 +125,18 @@ print_help () {
 }
 
 
-if [[ -n $1 ]]
-then
-    if [[ $1 = "?" ]]
-    then
+if [[ -n $1 ]]; then
+    if [[ $1 = "?" ]]; then
         print_help
-    elif [[ $1 = "h" ]]
-    then
+    elif [[ $1 = "h" ]]; then
         print_help    
-    elif [[ $1 = "i" ]]
-    then
-        echo "init"
-    elif [[ $1 = "r" ]]
-    then
+    elif [[ $1 = "i" ]]; then
+        ínitialize
+    elif [[ $1 = "r" ]]; then
         run_server
-    elif [[ $1 = "p" ]]
-    then
+    elif [[ $1 = "p" ]]; then
 	    patch_server
-    elif [[ $1 = "pr" ]]
-    then
+    elif [[ $1 = "pr" ]]; then
         patch_server
         run_server
     else
