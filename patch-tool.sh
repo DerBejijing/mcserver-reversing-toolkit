@@ -6,7 +6,7 @@
 FILETRACKER=files.txt
 SRCDIR=./decompiled
 SERVER_ORIGINAL=./server/spigot-1.16.5.jar
-SERVER_PATCHED=updated_server/spigot-1.16.5.jar
+SERVER_PATCHED=patched_server/spigot-1.16.5.jar
 
 DIR_DECOMPILED=./decompiled
 DIR_PATCHED=./patched_server
