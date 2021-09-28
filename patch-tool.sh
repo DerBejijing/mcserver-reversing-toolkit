@@ -122,6 +122,8 @@ run_server () {
         mkdir $DIR_PATCHED
     fi
 
+    echo -e "${COLOR_YELLOW}... ] Done initializing${COLOR_RESET}"
+
 }
 
 
@@ -153,7 +155,7 @@ if [[ -n $1 ]]; then
         patch_server
         run_server
     else
-	    print_help
+	print_help
     fi
 else
     print_help
