@@ -103,12 +103,25 @@ run_server () {
 
 }
 
-
 ínitialize () {
 
-    if test -f "$FILETRACKER"; then
-        echo exists
+    echo -e "${COLOR_YELLOW}Initializing... [${COLOR_RESET}"
+
+    if ! test -f "$FILETRACKER"; then
+        echo -e "${COLOR_LIGHT_BLUE}${FILETRACKER}${COLOR_RESET}"
+        touch $FILETRACKER
     fi
+
+    if [[ ! -d "${DIR_DECOMPILED}" ]]; then
+        echo -e "${COLOR_LIGHT_BLUE}${DIR_DECOMPILED}${COLOR_RESET}"
+        mkdir $DIR_DECOMPILED
+    fi
+
+    if [[ ! -d "$DIR_PATCHED" ]]; then
+        echo -e "${COLOR_LIGHT_BLUE}${DIR_PATCHED}${COLOR_RESET}"
+        mkdir $DIR_PATCHED
+    fi
+
 }
 
 
