@@ -27,7 +27,7 @@ patch_server () {
     
     LINES=$(wc -l <$FILETRACKER)
     if [[ $LINES -gt 0 ]]; then
-        cd $SRCDIR
+        cd $DIR_DECOMPILED
         echo -e "\n${COLOR_YELLOW}Compiling... [${COLOR_RESET}"
         ERROR_FILES=("")
 
