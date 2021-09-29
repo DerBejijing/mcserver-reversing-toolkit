@@ -2,14 +2,17 @@
 # UNDER CONSTRUCTION !!!!!!!
 # working on initializing and creating files/directories
 
-
-FILETRACKER=files.txt
-SRCDIR=./decompiled
-SERVER_ORIGINAL=./server/spigot-1.16.5.jar
-SERVER_PATCHED=patched_server/spigot-1.16.5.jar
-
+DIR_DATA=./data
+DIR_SERVER=./server_jar
 DIR_DECOMPILED=./decompiled
 DIR_PATCHED=./patched_server
+DIR_DECOMPILERS=./decompilers
+
+FILETRACKER=${DIR_DATA}/files.txt
+SERVER_ARGS=${DIR_DATA}/args.txt
+
+SERVER_ORIGINAL=${DIR_SERVER}/spigot-1.16.5.jar
+SERVER_PATCHED=${DIR_PATCHED}/spigot-1.16.5.jar
 
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
