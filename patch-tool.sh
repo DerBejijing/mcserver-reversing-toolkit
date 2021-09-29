@@ -1,6 +1,5 @@
 
-# UNDER CONSTRUCTION !!!!!!!
-# working on initializing and creating files/directories
+# I think I broke it. Uploading a fix soon
 
 DIR_DATA=./data
 DIR_SERVER=./server_jar
