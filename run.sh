@@ -28,6 +28,10 @@ get_jar () {
 run_server () {
 
 	SERVER_JAR=$(get_jar $DIR_PATCHED)
+	if [[ $SERVER_JAR = "" ]]; then
+		echo -e "${COLOR_RED}No server-jar found${COLOR_RESET}"
+		exit -1
+	fi
 
 	echo -e "${COLOR_YELLOW}Running Server...${COLOR_RESET}"
 	echo -e "${COLOR_GREEN}${@}${COLOR_RESET}"
