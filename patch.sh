@@ -19,7 +19,18 @@ COLOR_RESET='\033[0m'
 
 get_path_depth () {
 
-	echo $("$1" | grep -o "/" | wc -l)
+	echo $( echo "$1" | grep -o "/" | wc -l)
+
+}
+
+
+get_upwards_path () {
+
+	TMP=""
+	for i in $(seq $1); do
+		TMP+="../"
+	done
+	echo "$TMP"
 
 }
 
@@ -54,8 +65,15 @@ compile () {
 }
 
 
-# This is not functional yet, as it dows not know where to put the compiled classes
 patch () {
+	# $1: filetracker
+	# $2: dir_decompiled
+	# $3: patch_jar
+
+	CURRENTPATHDEPTH=$(get_path_depth "$2")
+	WAY_BACK=$(get_upwards_path $CURRENTPATHDEPTH)
+
+	cd $2
 
 	PATCHED_FILES=0
     echo -e "${COLOR_YELLOW}Patching server jar${COLOR_RESET}"
@@ -73,16 +91,20 @@ patch () {
         done
 
         if [[ $CONTAINS -eq 0 ]]; then
+        	echo $(pwd)
+
             NEXT_FILE=${NEXT_FILE//.java/.class}
-            echo -e "${COLOR_LIGHT_BLUE}${NEXT_FILE}${COLOR_RESET}"
-            jar -uf $2 $NEXT_FILE
+            echo -e "${COLOR_LIGHT_BLUE}${WAY_BACK}${2}/${NEXT_FILE}${COLOR_RESET}"
+            jar -uf ${WAY_BACK}${3} ${WAY_BACK}${2}/${NEXT_FILE}
             ((PATCHED_FILES=PATCHED_FILES+1))
         fi
-    done < $1
+    done < ${WAY_BACK}${1}
 
 	if [[ $PATCHED_FILES -eq 0 ]]; then
 		echo -e "${COLOR_RED}No files have been packed${COLOR_RESET}"
 	fi
+
+	cd $WAY_BACK
 
     echo -e "${COLOR_YELLOW}... ] Done packing${COLOR_RESET}"
 
@@ -114,7 +136,7 @@ patch_server () {
 	fi
 
 	compile $FILETRACKER $DIR_DECOMPILED $CLASSPATH_JAR
-	patch $FILETRACKER $PATCH_JAR
+	patch $FILETRACKER $DIR_DECOMPILED $PATCH_JAR
 	
 
 }
