@@ -17,6 +17,13 @@ COLOR_RESET='\033[0m'
 
 
 
+get_path_depth () {
+
+	echo $("$1" | grep -o "/" | wc -l)
+
+}
+
+
 get_jar () {
 
 	JAR_FILES=($( find ${1} -name "*.jar" -type f ))
