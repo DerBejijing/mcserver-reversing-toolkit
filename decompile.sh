@@ -1,3 +1,4 @@
+DIR_DATA=./data
 DIR_DECOMPILERS=./decompilers
 DIR_DECOMPILERS_BIN=${DIR_DECOMPILERS}/bin
 
@@ -20,6 +21,12 @@ get_available_decompilers () {
 	echo "${COUNT} avialable decompilers"
 
 }
+
+
+if [[ ! -d "${DIR_DATA}" ]]; then
+	echo -e "${COLOR_RED}Your data directory does not exist. Run ${COLOR_LIGHT_BLUE}./setup.sh${COLOR_RED} first${COLOR_RESET}"
+	exit -1
+fi
 
 
 get_available_decompilers
