@@ -40,6 +40,12 @@ run_server () {
 }
 
 
+if [[ ! -d "${DIR_DATA}" ]]; then
+	echo -e "${COLOR_RED}Your data directory does not exist. Run ${COLOR_LIGHT_BLUE}./setup.sh${COLOR_RED} first${COLOR_RESET}"
+	exit -1
+fi
+
+
 if [[ -n $1 ]]; then
 	ARGUMENTS="$@"
 	run_server $ARGUMENTS
