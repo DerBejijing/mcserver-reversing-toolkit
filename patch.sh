@@ -66,9 +66,6 @@ compile () {
 
 
 patch () {
-	# $1: filetracker
-	# $2: dir_decompiled
-	# $3: patch_jar
 
 	CURRENTPATHDEPTH=$(get_path_depth "$2")
 	WAY_BACK=$(get_upwards_path $CURRENTPATHDEPTH)
@@ -79,7 +76,6 @@ patch () {
     echo -e "${COLOR_YELLOW}Patching server jar${COLOR_RESET}"
     echo -e "${COLOR_YELLOW}Packing files... [${COLOR_RESET}"
     while read line; do
-        #NEXT_FILE=${line//.java/.class}
         NEXT_FILE=$line
         CONTAINS=0
 
@@ -91,11 +87,10 @@ patch () {
         done
 
         if [[ $CONTAINS -eq 0 ]]; then
-        	echo $(pwd)
-
             NEXT_FILE=${NEXT_FILE//.java/.class}
-            echo -e "${COLOR_LIGHT_BLUE}${WAY_BACK}${2}/${NEXT_FILE}${COLOR_RESET}"
-            jar -uf ${WAY_BACK}${3} ${WAY_BACK}${2}/${NEXT_FILE}
+
+            echo -e "${COLOR_LIGHT_BLUE}${NEXT_FILE}${COLOR_RESET}"
+            jar -uf ${WAY_BACK}${3} ${NEXT_FILE}
             ((PATCHED_FILES=PATCHED_FILES+1))
         fi
     done < ${WAY_BACK}${1}
