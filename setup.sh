@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DIR_DATA=./data
 DIR_SERVER=./server_jar
 DIR_DECOMPILED=./decompiled
