@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DIR_DATA=./data
 DIR_DECOMPILERS=./decompilers
 DIR_DECOMPILERS_BIN=${DIR_DECOMPILERS}/bin
