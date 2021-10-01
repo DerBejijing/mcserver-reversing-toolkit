@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DIR_DATA=./data
 DIR_PATCHED=./patched_server
 
