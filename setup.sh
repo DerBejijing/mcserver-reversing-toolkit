@@ -4,8 +4,7 @@ DIR_DATA=./data
 DIR_SERVER=./server_jar
 DIR_DECOMPILED=./decompiled
 DIR_PATCHED=./patched_server
-DIR_DECOMPILERS=./decompilers
-DIR_DECOMPILERS_BIN=${DIR_DECOMPILERS}/bin
+DIR_DECOMPILERS_BIN=./decompilers/bin
 
 FILETRACKER=${DIR_DATA}/files.txt
 SERVER_ARGS=${DIR_DATA}/args.txt
@@ -43,9 +42,6 @@ setup_files () {
 
 	mkdir $DIR_PATCHED
 	echo_file $DIR_PATCHED
-
-	mkdir $DIR_DECOMPILERS
-	echo_file $DIR_DECOMPILERS
 	
 	mkdir $DIR_DECOMPILERS_BIN
 	echo_file $DIR_DECOMPILERS_BIN
