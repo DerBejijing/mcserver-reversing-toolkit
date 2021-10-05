@@ -21,6 +21,7 @@ File | Usage
 <br>
 
 # Usage
+First, place your server-jar in **both** the './server_jar' and the './patched_server' directory.   
 All files are explained below.  
 
 <br><br>
