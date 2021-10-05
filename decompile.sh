@@ -1,6 +1,8 @@
 #!/bin/bash
 
 DIR_DATA=./data
+DIR_SERVER=./server_jar
+DIR_DECOMPILED=./decompiled
 DIR_DECOMPILERS=./decompilers
 DIR_DECOMPILERS_BIN=${DIR_DECOMPILERS}/bin
 
@@ -17,6 +19,18 @@ COLOR_LIGHT_BLUE='\033[1;34m'
 COLOR_YELLOW='\033[1;33m'
 COLOR_RESET='\033[0m'
 
+
+
+get_jar () {
+
+	JAR_FILES=($( find ${1} -name "*.jar" -type f ))
+	if [[ ${#JAR_FILES[@]} -eq 0 ]]; then
+		echo ""
+	else
+		echo ${JAR_FILES[0]}
+	fi
+
+}
 
 
 get_decompiler_info () {
@@ -106,7 +120,7 @@ install_decompiler () {
 	read -r -p "Enter filename of a decompiler or Ctrl+C to exit: " CHOICE
 	CHOICE=${CHOICE//" "/}
 	if test -f ${DIR_DECOMPILERS}/${CHOICE}; then
-		echo -e ${COLOR_YELLOW}Installing decompiler: ${COLOR_LIGHT_BLUE}${CHOICE}${COLOR_RESET}
+		echo -e ${COLOR_YELLOW}\nInstalling decompiler: ${COLOR_LIGHT_BLUE}${CHOICE}${COLOR_RESET}
 		chmod +x ${DIR_DECOMPILERS}/${CHOICE}
 		${DIR_DECOMPILERS}/${CHOICE} install
 	else
@@ -126,9 +140,9 @@ run_decompiler () {
 	read -r -p "Enter filename of a decompiler or Ctrl+C to exit: " CHOICE
 	CHOICE=${CHOICE//" "/}
 	if test -f ${DIR_DECOMPILERS}/${CHOICE}; then
-		echo -e ${COLOR_YELLOW}Installing decompiler: ${COLOR_LIGHT_BLUE}${CHOICE}${COLOR_RESET}
+		echo -e ${COLOR_YELLOW}\nRunning decompiler: ${COLOR_LIGHT_BLUE}${CHOICE}${COLOR_RESET}
 		chmod +x ${DIR_DECOMPILERS}/${CHOICE}
-		${DIR_DECOMPILERS}/${CHOICE} run
+		${DIR_DECOMPILERS}/${CHOICE} "run" "$(get_jar ${DIR_SERVER})" "${DIR_DECOMPILED}"
 	else
 		echo "Decompiler does not exist"
 		read -n 1 -s -r -p "Press any key to continue"
@@ -169,7 +183,7 @@ if [[ -n $1 ]]; then
 	elif [[ $1 = "--install" ]]; then
     	install_decompiler
 	elif [[ $1 = "--decompile" ]]; then
-    	echo "Decompile-menu"
+    	run_decompiler
     else
 	    print_help
     fi
