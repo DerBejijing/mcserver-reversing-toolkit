@@ -60,3 +60,4 @@ Or directly run the bash scipt with the arguments you want the server to use.
 - [ ] Rethink the classpath thing
 - [ ] Make run.sh automatically agree to the eula
 - [ ] Make another bash-script to automatically install any 3rd party server-jar (Spigot, Bukkit, Paper, etc.) for any minecraft version
+- [ ] Damn I wanted to add somthing but now I forgot
