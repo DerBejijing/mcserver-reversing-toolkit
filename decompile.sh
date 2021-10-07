@@ -120,7 +120,7 @@ install_decompiler () {
 	read -r -p "Enter filename of a decompiler or Ctrl+C to exit: " CHOICE
 	CHOICE=${CHOICE//" "/}
 	if test -f ${DIR_DECOMPILERS}/${CHOICE}; then
-		echo -e ${COLOR_YELLOW}\nInstalling decompiler: ${COLOR_LIGHT_BLUE}${CHOICE}${COLOR_RESET}
+		echo -e ${COLOR_YELLOW}Installing decompiler: ${COLOR_LIGHT_BLUE}${CHOICE}${COLOR_RESET}
 		chmod +x ${DIR_DECOMPILERS}/${CHOICE}
 		${DIR_DECOMPILERS}/${CHOICE} install
 	else
@@ -140,7 +140,7 @@ run_decompiler () {
 	read -r -p "Enter filename of a decompiler or Ctrl+C to exit: " CHOICE
 	CHOICE=${CHOICE//" "/}
 	if test -f ${DIR_DECOMPILERS}/${CHOICE}; then
-		echo -e ${COLOR_YELLOW}\nRunning decompiler: ${COLOR_LIGHT_BLUE}${CHOICE}${COLOR_RESET}
+		echo -e ${COLOR_YELLOW}Running decompiler: ${COLOR_LIGHT_BLUE}${CHOICE}${COLOR_RESET}
 		chmod +x ${DIR_DECOMPILERS}/${CHOICE}
 		${DIR_DECOMPILERS}/${CHOICE} "run" "$(get_jar ${DIR_SERVER})" "${DIR_DECOMPILED}"
 	else
