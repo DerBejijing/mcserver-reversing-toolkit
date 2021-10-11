@@ -85,13 +85,14 @@ install () {
 
 decompile () {
 
+	if ! test -f ${DIR_BIN}fernflower.jar; then
+		echo -e "${COLOR_RED}Decompiler is not installed yet${COLOR_RESET}"
+		exit
+	fi
+
 	run_tests
 
-	echo ${DIR_BIN}/fernflower.jar 
-	echo $SERVER_JAR
-	echo $DIR_DECOMPILED_JAR
-
-	java -jar ${DIR_BIN}/fernflower.jar $SERVER_JAR $DIR_DECOMPILED_JAR
+	java -jar ${DIR_BIN}fernflower.jar $SERVER_JAR $DIR_DECOMPILED_JAR
 	unzip $DIR_DECOMPILED_JAR/*.jar -d $DIR_DECOMPILED_JAR
 	rm $DIR_DECOMPILED_JAR/*.jar
 
