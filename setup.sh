@@ -6,6 +6,7 @@ DIR_DECOMPILED_JAR=./decompiled_jar
 DIR_PATCHED_JAR=./patched_jar
 
 DIR_DECOMPILERS=${DIR_TOOL}/decompilers
+DIR_DECOMPILERS_BIN=${DIR_DECOMPILERS}/bin
 DIR_UTILS=${DIR_TOOL}/utils
 DIR_TMP=${DIR_TOOL}/tmp
 
@@ -26,6 +27,7 @@ setup_files () {
 	rm -rf $DIR_SERVER_JAR
 	rm -rf $DIR_DECOMPILED_JAR
 	rm -rf $DIR_TMP
+	rm -rf $DIR_DECOMPILERS_BIN
 	rm $FILETRACKER
 	rm $SERVER_ARGS
 
@@ -33,6 +35,7 @@ setup_files () {
 	mkdir $DIR_SERVER_JAR
 	mkdir $DIR_DECOMPILED_JAR
 	mkdir $DIR_TMP
+	mkdir $DIR_DECOMPILERS_BIN
 
 	touch $FILETRACKER
 	touch $SERVER_ARGS
