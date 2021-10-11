@@ -1,11 +1,15 @@
 #!/bin/bash
 
-DIR_DATA=./data
-DIR_PATCHED=./patched_server
+DIR_TOOL=./tool
+DIR_PATCHED_JAR=./patched_jar
 
-SERVER_ARGS=${DIR_DATA}/args.txt
+DIR_UTILS=${DIR_TOOL}/utils
 
-SERVER_JAR=""
+SERVER_ARGS=${DIR_TOOL}/args.txt
+SCRIPT_GET_JAR=${DIR_UTILS}/get_jar.sh
+SCRIPT_GET_INITIALIZED=${DIR_UTILS}/get_initialized.sh
+
+
 
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
@@ -15,21 +19,10 @@ COLOR_RESET='\033[0m'
 
 
 
-get_jar () {
-
-	JAR_FILES=($( find ${1} -name "*.jar" -type f ))
-	if [[ ${#JAR_FILES[@]} -eq 0 ]]; then
-		echo ""
-	else
-		echo ${JAR_FILES[0]}
-	fi
-
-}
-
-
 run_server () {
 
-	SERVER_JAR=$(get_jar $DIR_PATCHED)
+	SERVER_JAR=$(${SCRIPT_GET_JAR} ${DIR_PATCHED_JAR})
+
 	if [[ $SERVER_JAR = "" ]]; then
 		echo -e "${COLOR_RED}No server-jar found${COLOR_RESET}"
 		exit -1
@@ -42,13 +35,14 @@ run_server () {
 }
 
 
-if [[ ! -d "${DIR_DATA}" ]]; then
-	echo -e "${COLOR_RED}Your data directory does not exist. Run ${COLOR_LIGHT_BLUE}./setup.sh${COLOR_RED} first${COLOR_RESET}"
-	exit -1
+
+if ! [[ $(${SCRIPT_GET_INITIALIZED}) = "ok" ]]; then
+	echo -e "${COLOR_RED}Some directories are missing, try running ${COLOR_LIGHT_BLUE}./setup${COLOR_RESET}"
+	exit 0
 fi
 
-
 if [[ -n $1 ]]; then
+	echo -e "${COLOR_YELLOW}Using arguments: ${COLOR_LIGHT_BLUE}${@}${COLOR_RESET}"
 	ARGUMENTS="$@"
 	run_server $ARGUMENTS
 else
