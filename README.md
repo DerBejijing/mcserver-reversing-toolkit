@@ -1,5 +1,5 @@
-# mcserver-patch-tool
-I use this when reversing minecraft server code
+# mcserver-reversing-toolkit
+I use this when reverse-engineering minecraft server code
 
 
 # About  
