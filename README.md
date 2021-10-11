@@ -2,6 +2,8 @@
 I use this when reversing minecraft server code
 
 
+**This project is currently being refactored. Eventhough it works fine, the code mostly consists of duplicates and is on the whole quite obscure.**  
+
 
 # About  
 Whenever I use decompilers to reverse the minecraft server code to understand its functionality, I want to be able to easily modify the code to add debug stuff, like sysouts. Therefore I wrote (still writing) this simple bash-script-collection to automate patching and running the server.  
