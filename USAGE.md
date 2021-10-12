@@ -3,6 +3,7 @@ I use this when reverse-engineering minecraft server code
 In the following, I will first discuss all tools and their use, and then show you how to set up a workspace and get started reversing and modifying.  
 
 <br>
+[Understanding the Tools](#understanding-the-tools)
 
 # Understanding the Tools  
 This toolkit contains a few bash-scripts. Each one serves a specific purpose. All tools are located in the Projects "root", like './setup.sh'.  
