@@ -1,11 +1,8 @@
 # mcserver-reversing-toolkit
-I use this when reverse-engineering minecraft server code
-
-<br>
-
+I use this when reverse-engineering minecraft server code  
 In the following I will first discuss all tools and their use, and then show you how to setup a workspace and get started reversing and modifying.  
 
-<br><br>
+<br>
 
 # Understanding the Tools  
 This toolkit contains a few bash-scripts. Each one serves a specific purpose. All tools are located in the Projects "root", like './setup.sh'.  
@@ -63,3 +60,20 @@ Option | Function
 **run.sh**  
 If no further arguments are given, It will run the patched server-jar with all arguments listed in './tool/args.txt' (single line).  
 Or directly run the bash scipt with the arguments you want the server to use.
+
+<br><br>
+
+# Getting started
+1. Run `./setup.sh`. Make sure the file has the executeable bit set, if not set it with `chmod +x setup.sh`. Running setup will set the executeable bit for all other tools
+2. Install a server-jar. You can either download one from anywhere and place it in **both** the 'server_jar' and the 'patched_jar' directory, or you can use `./install_server.sh`:
+  Run `./install_server.sh --install <name> <version>`. If you wanted vanilla 1.17, you would have to run it like this: `./install_server --install vanilla V1_17_00`. The downloaded server will be placed in both directories.  
+3. Run `./decompile.sh --install <name>`, to install a decompiler. Right now, only fernflower is included. Confirm that by running with `--list`. Unpon installation, you can run the decompiler (`--decompile`). The decompiled jar will be placed in the 'decompiled_jar' directory.  
+4. Run `./track.sh --init` to compute all files checksums. If you want to modify code without having to manually add each modified file to the 'tool/files.txt' file, this is neccessary.
+
+You can now start modifying your decompiled code and add, just to give an example, debug stuff.  
+Once you are done follow the next steps to patch your changes into a new jar-file.  
+1. Run `./track.sh` without arguments to add all modified files to the filetracker.
+2. Run `./patch.sh` to compile all tracked files and patch them into a new jar-file.
+Repeat this step over and over again, as you like.  
+
+To run the patched jar file, use the `./run.sh`, explained above.  
