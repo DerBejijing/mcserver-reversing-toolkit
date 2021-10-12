@@ -7,6 +7,7 @@ DIR_DECOMPILED_JAR=./decompiled_jar
 DIR_UTILS=${DIR_TOOL}/utils
 
 FILETRACKER=${DIR_TOOL}/files.txt
+SCRIPT_TRACK=./track.sh
 SCRIPT_GET_JAR=${DIR_UTILS}/get_jar.sh
 SCRIPT_GET_INITIALIZED=${DIR_UTILS}/get_initialized.sh
 
@@ -108,6 +109,12 @@ patch_server () {
 if ! [[ $(${SCRIPT_GET_INITIALIZED}) = "ok" ]]; then
 	echo -e "${COLOR_RED}Some directories are missing, try running ${COLOR_LIGHT_BLUE}./setup${COLOR_RESET}"
 	exit 0
+fi
+
+if [[ -n $1 ]]; then
+	if [[ $1 = "--tracked" ]]; then
+		${SCRIPT_TRACK}
+	fi
 fi
 
 patch_server
