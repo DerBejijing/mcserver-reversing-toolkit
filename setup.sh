@@ -10,6 +10,7 @@ DIR_DECOMPILERS_BIN=${DIR_DECOMPILERS}/bin
 DIR_UTILS=${DIR_TOOL}/utils
 DIR_TMP=${DIR_TOOL}/tmp
 
+FILESUMS=${DIR_TOOL}/sha_sums.txt
 FILETRACKER=${DIR_TOOL}/files.txt
 SERVER_ARGS=${DIR_TOOL}/args.txt
 
@@ -28,6 +29,7 @@ setup_files () {
 	rm -rf $DIR_DECOMPILED_JAR
 	rm -rf $DIR_TMP
 	rm -rf $DIR_DECOMPILERS_BIN
+	rm $FILESUMS
 	rm $FILETRACKER
 	rm $SERVER_ARGS
 
@@ -37,6 +39,7 @@ setup_files () {
 	mkdir $DIR_TMP
 	mkdir $DIR_DECOMPILERS_BIN
 
+	touch $FILESUMS
 	touch $FILETRACKER
 	touch $SERVER_ARGS
 
