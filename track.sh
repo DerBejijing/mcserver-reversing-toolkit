@@ -43,13 +43,14 @@ track () {
 	touch $TMP_FILESUMS
 	find $DIR_DECOMPILED_JAR -name "*.java" | xargs shasum | tr -s '[:space:]' > $TMP_FILESUMS
 
+	# empties the filetracker. needed/useful?
+	rm $FILETRACKER
+	touch $FILETRACKER
+
 	while read line; do
 
 		CONTAINS=$(cat $FILESUMS | grep "$line" | wc -l)
 		if [[ $CONTAINS = "0" ]]; then
-			rm $FILETRACKER
-			touch $FILETRACKER
-
 			echo "${line}"
 			substrings=( $line )
 			line=${substrings[1]}
