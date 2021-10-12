@@ -89,9 +89,7 @@ patch_server () {
 		echo -e "${COLOR_RED}No files have been specified${COLOR_RESET}"
 		exit -1
 	fi
-
-
-	#here might be an error
+	
 	PATCH_JAR=$($SCRIPT_GET_JAR)
 
 	if [[ $PATCH_JAR = "" ]]; then
