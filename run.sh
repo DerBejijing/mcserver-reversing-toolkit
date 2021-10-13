@@ -9,8 +9,6 @@ SERVER_ARGS=${DIR_TOOL}/args.txt
 SCRIPT_GET_JAR=${DIR_UTILS}/get_jar.sh
 SCRIPT_GET_INITIALIZED=${DIR_UTILS}/get_initialized.sh
 
-
-
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
 COLOR_LIGHT_BLUE='\033[1;34m'
@@ -21,7 +19,9 @@ COLOR_RESET='\033[0m'
 
 run_server () {
 
-	SERVER_JAR=$(${SCRIPT_GET_JAR} ${DIR_PATCHED_JAR})
+	TMP_LOC=$(pwd)
+	cd ${DIR_PATCHED_JAR}
+	SERVER_JAR=$(${TMP_LOC}/${SCRIPT_GET_JAR} "${TMP_LOC}/${DIR_PATCHED_JAR}")
 
 	if [[ $SERVER_JAR = "" ]]; then
 		echo -e "${COLOR_RED}No server-jar found${COLOR_RESET}"
@@ -32,8 +32,9 @@ run_server () {
 	echo -e "${COLOR_GREEN}${@}${COLOR_RESET}"
 	java -jar $SERVER_JAR ${@}
 
-}
+	cd $TMP_LOC
 
+}
 
 
 if ! [[ $(${SCRIPT_GET_INITIALIZED}) = "ok" ]]; then
