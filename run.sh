@@ -48,6 +48,6 @@ if [[ -n $1 ]]; then
 	run_server $ARGUMENTS
 else
 	echo -e "${COLOR_YELLOW}Using arguments from file: ${COLOR_LIGHT_BLUE}${SERVER_ARGS}${COLOR_RESET}"
-	ARGUMENTS=""
+	ARGUMENTS=$(cat $SERVER_ARGS)
 	run_server $ARGUMENTS
 fi
