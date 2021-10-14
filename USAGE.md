@@ -27,7 +27,7 @@ When you want to clean up it will always ask you whether you  _really_ want to r
 <br>
 
 **install_server.sh**  
-Run this file to automatically install (3rd party) minecraft servers. Right now there is only an installer for the vanilla-jar, but due to the modular system, it is very easy to add more, which I will surely do.  
+Run this file to automatically install (3rd party) minecraft servers. Right now there is only an installer for the vanilla-jar and spigot, but due to the modular system, it is very easy to add more, which I will surely do.  
 
 Option | Function
 -------|---------
