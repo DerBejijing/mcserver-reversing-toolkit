@@ -66,7 +66,7 @@ Or directly run the bash script with the arguments you want the server to use.
 # Getting started
 1. Run `./setup.sh`. Make sure the file has the executable bit set, if not, set it with `chmod +x setup.sh`. Running setup will set the executable bit for all other tools
 2. Install a server-jar. You can either download one from anywhere and place it in **both** the 'server_jar' and the 'patched_jar' directory, or you can use `./install_server.sh`:
-  Run `./install_server.sh --install <name> <version>`. If you wanted vanilla 1.17, you would have to run it like this: `./install_server --install vanilla V1_17_00`. The downloaded server will be placed in both directories.  
+  Run `./install_server.sh --install <name> <version>`. If you wanted vanilla 1.17, you would have to run it like this: `./install_server --install vanilla 1.17.0`. The downloaded server will be placed in both directories.  
 3. Run `./decompile.sh --install <name>`, to install a decompiler. Right now, only fernflower is included. Confirm that by running with `--list`. Upon installation, you can run the decompiler (`--decompile`). The decompiled jar will be placed in the 'decompiled_jar' directory.  
 4. Run `./track.sh --init` to compute all files checksums. If you want to modify code without having to manually add each modified file to the 'tool/files.txt' file, this is necessary.
 
