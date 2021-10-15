@@ -29,6 +29,23 @@ When you want to clean up it will always ask you whether you  _really_ want to r
 **install_server.sh**  
 Run this file to automatically install (3rd party) minecraft servers. Right now there is only an installer for the vanilla-jar and spigot, but due to the modular system, it is very easy to add more, which I will surely do.  
 
+Because of my input-beautification-system (which I am very proud of btw), valid formats of the version-specification are:  
+
+`V1_17_00`  
+`1.17.0`  
+`a1b.c1d7e.f0g`  
+`000001.00000017.00000`  
+
+
+At this point it is still important to supply a version consisting of exactly three components. So  
+`1.17.0`  
+would be valid, while  
+`1.17`  
+or  
+`1.17.0.0`  
+would not be.
+
+
 Option | Function
 -------|---------
 `./install_server.sh --list` | will get you a list of all installer scripts  
@@ -38,6 +55,7 @@ Option | Function
 
 **decompile.sh**
 All decompilers are run and installed via an individual bash-script in the './tools/decompilers' directory. That way, you can easily add other decompilers and commands to install them without changing the other scripts themselves. And sharing these scripts is just as simple.  
+
 
 Option | Function
 -------|---------
@@ -50,6 +68,7 @@ Option | Function
 **track.sh**  
 Initializing calculates the sha-1 sums for all decompiled .java files and stores them in a file. When running, it will check for all decompiled .java files, whether they have been modified or not, by validating their checksums.  
 If they have been modified, the path gets added to the filetracker ('tool/files.txt'). All files listed there will be compiled and packed into the patched jar when running './patch.sh'.
+
 
 Option | Function
 -------|---------
