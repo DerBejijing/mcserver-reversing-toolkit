@@ -53,7 +53,7 @@ Option | Function
 
 <br><br>
 
-**decompile.sh**
+**decompile.sh**  
 All decompilers are run and installed via an individual bash-script in the './tools/decompilers' directory. That way, you can easily add other decompilers and commands to install them without changing the other scripts themselves. And sharing these scripts is just as simple.  
 
 
