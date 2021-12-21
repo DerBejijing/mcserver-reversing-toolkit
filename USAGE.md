@@ -55,6 +55,7 @@ Option | Function
 
 **decompile.sh**  
 All decompilers are run and installed via an individual bash-script in the './tools/decompilers' directory. That way, you can easily add other decompilers and commands to install them without changing the other scripts themselves. And sharing these scripts is just as simple.  
+NOTE: the installer for the fernflower decompiler uses gradle to compile. You will therefore have to switch to a lower version of java. On debian-based systems you can use `update-alternatives --config java` to do that.  
 
 
 Option | Function
