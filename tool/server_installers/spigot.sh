@@ -3,6 +3,9 @@
 DIR_SERVER_JAR=""
 DIR_PATCHED_JAR=""
 
+V01_18_01=https://download.getbukkit.org/spigot/spigot-1.18.1.jar
+V01_18_00=https://download.getbukkit.org/spigot/spigot-1.18.jar
+
 V01_17_01=https://download.getbukkit.org/spigot/spigot-1.17.1.jar
 V01_17_00=https://download.getbukkit.org/spigot/spigot-1.17.jar
 
