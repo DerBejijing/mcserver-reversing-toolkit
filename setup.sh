@@ -29,9 +29,9 @@ setup_files () {
 	rm -rf $DIR_DECOMPILED_JAR
 	rm -rf $DIR_TMP
 	rm -rf $DIR_DECOMPILERS_BIN
-	rm $FILESUMS
-	rm $FILETRACKER
-	rm $SERVER_ARGS
+	rm -f $FILESUMS
+	rm -f $FILETRACKER
+	rm -f $SERVER_ARGS
 
 	mkdir $DIR_PATCHED_JAR
 	mkdir $DIR_SERVER_JAR
