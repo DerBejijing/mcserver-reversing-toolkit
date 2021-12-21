@@ -9,3 +9,4 @@ Whenever I use decompilers to reverse the minecraft server code to understand it
 
 # Usage  
 For a detailed explaination, please refer to the [USAGE.md](https://github.com/DerBejijing/mcserver-reversing-toolkit/blob/main/USAGE.md).  
+NOTE: while I included the new 1.18 versions, a lot has changed in the structure of the server-jar file which makes the scripts useless for these versions. So try using versions below 1.18 until I have come up with a fix.
