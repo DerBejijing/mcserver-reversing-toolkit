@@ -52,6 +52,7 @@ setup_files () {
 	#  of the project
 	chmod +x *.sh
 
+	# save the location the script was called from to cd back to it later
 	TMP_LOC=$(pwd)
 	
 	# set the executable bit for all utility-scripts
